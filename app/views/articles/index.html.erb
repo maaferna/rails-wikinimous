@@ -2,11 +2,15 @@
 
 <div class="d-flex justify-content-between align-items-center">
   <ul>
-    <%= @articles.each do |element| %>
+    <% @articles.reverse.each do |element| %>
       <div class="container">       
-        <h2> <%= link_to element.title, article_path(element) %> </h2>
+        <h2> <%= link_to element.title, article_path(element) %></h2>
         <br>
         <p> <%= element.content %> </p>
+        <%= link_to "", edit_article_path(element), class: "far fa-edit pl-1" %>
+        <%= link_to "", article_path(element),
+          method: :delete,
+          data: { confirm: "Are you sure?" }, class: "far fa-trash-alt pl-1" %>
       </div>
     <% end %>
   </ul>
